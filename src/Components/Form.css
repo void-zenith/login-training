@@ -1,0 +1,27 @@
+.input-field {
+  width: 300px;
+  border-radius: 13px;
+  height: 42px;
+  outline: none;
+  border: none;
+  margin: 5px 0px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.input-field__password{
+    margin-bottom: 17px;
+}
+
+.checkbox-container{
+    display: flex;
+    align-items: center;
+}
+.checkbox{
+    transform: scale(1.3);
+    border-radius: 13px;
+}
+.checkbox-text{
+    font-size: 12px;
+    margin-left: 5px;
+}

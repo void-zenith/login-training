@@ -1,0 +1,45 @@
+:root {
+  --blue-color: #363865;
+  --white-color: white;
+}
+
+.btn {
+  border-radius: 13px;
+  height: 42px;
+  outline: none;
+  border: none;
+
+  /*font*/
+  font-size: 21px;
+}
+
+/*sizes*/
+.btn--ExtraLarge {
+  width: 300px;
+}
+
+.btn--large {
+  width: 220px;
+}
+
+.btn--medium {
+  width: 170px;
+}
+
+.btn--small {
+  width: 120px;
+}
+
+/*end of sizes*/
+
+/*for colors*/
+.btn--login {
+  color: var(--blue-color);
+  background-color: var(--white-color);
+}
+.btn--outlined {
+  background-color: white;
+  border: 2.5px solid var(--blue-color);
+  color: var(--blue-color);
+}
+/*end of for colors*/
