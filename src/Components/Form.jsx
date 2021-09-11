@@ -1,54 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "./Buttons/Button";
-import { login } from "../Api";
 import "./Form.css";
+import MediaSign from "./MediaSignin/MediaSign";
 
-const Form = () => {
-  const [enteredUserName, setUserName] = useState("");
-  const [enteredPassword, setPassword] = useState("");
-  const [desc, setDesc] = useState(
-    "Enter your credentials and Log in to your dashboard"
-  );
-  const userNameHandler = (e) => {
-    setUserName(e.target.value);
-  };
-  const passwordHandler = (e) => {
-    setPassword(e.target.value);
-  };
-  const data = {
-    username: enteredUserName,
-    password: enteredPassword,
-  };
-  const hanldeLogin = async (e) => {
-    e.preventDefault();
-    login(data).then((dataRe) => {
-      console.log(dataRe);
-      setDesc(`Welcome ${dataRe.user.username} (${dataRe.user.email})`);
-    }).catch((err)=>{
-      setDesc(`${err}`);
-    })
-  };
+const Form = ({ handleChange, hanldeSubmit, credentials }) => {
+  console.log(`${hanldeSubmit},${hanldeSubmit},${credentials}`);
   return (
     <div className="form-container">
-      <p className="description">{desc}</p>
-
-      <form onSubmit={hanldeLogin}>
+      <p className="description">
+        Enter your credentials and Log in to your dashboard
+      </p>
+      <form>
         <input
           className="input-field input-field__username"
           placeholder="username"
           type="text"
-          autoComplete="username"
-          value={enteredUserName}
-          onChange={userNameHandler}
+          name="username"
+          value={credentials.username}
+          onChange={handleChange}
         ></input>
         <br />
         <input
           className="input-field input-field__password"
           placeholder="password"
           type="text"
-          autoComplete="current-password"
-          value={enteredPassword}
-          onChange={passwordHandler}
+          name="password"
+          value={credentials.password}
+          onChange={handleChange}
         ></input>
         <br />
         <div className="checkbox-container">
@@ -59,15 +37,21 @@ const Form = () => {
           ></input>
           <span className="checkbox-text">Remember Me</span>
         </div>
-
         <br />
         <Button
-          onClick={hanldeLogin}
           size="btn--ExtraLarge"
           variant="btn--login"
           label="Sign in"
+          onClick={hanldeSubmit}
         ></Button>
       </form>
+      <p className="description">
+        Don't have an account?{" "}
+        <a className="link" href="www">
+          Create your account
+        </a>
+      </p>
+      <MediaSign></MediaSign>
     </div>
   );
 };

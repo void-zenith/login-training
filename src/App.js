@@ -1,17 +1,26 @@
 import "./App.css";
-import Form from "./Components/Form";
-import MediaSign from "./Components/MediaSignin/MediaSign";
+import AppRouter from "./AppRouter";
+import { createContext, useEffect, useState } from "react";
+
+export const AuthContext = createContext();
+
 function App() {
-  let url="";
+  const [isAuthenticated, setAuthentication] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("access_token") !== null) {
+      setAuthentication(true);
+    }
+  }, []);
   return (
-    <div className="App">
-      <div className="main-container">
-        <h1 className="logo">LOGO</h1>
-        <Form></Form>
-        <p className="description">Don't have an account? <a className="link"href={url}>Create your account</a></p>
-        <MediaSign></MediaSign>
+    <AuthContext.Provider value={{ isAuthenticated, setAuthentication }}>
+      <div className="App">
+        <div className="main-container">
+          <h1 className="logo">LOGO</h1>
+          <AppRouter></AppRouter>
+        </div>
       </div>
-    </div>
+    </AuthContext.Provider>
   );
 }
 

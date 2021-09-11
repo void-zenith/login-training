@@ -1,15 +1,10 @@
 import React from "react";
 import "./Button.css";
-const Button = ({ size, variant, label  }) => {
+const Button = ({ size, onClick,variant, label }) => {
   return (
-    <div className="flex">
-      <button
-        className={`btn ${size} ${variant}`}
-        data-testid="button"
-      >
-        {label}
-      </button>
-    </div>
+    <button className={`btn ${size} ${variant}`} onClick={onClick}>
+      {label}
+    </button>
   );
 };
 
